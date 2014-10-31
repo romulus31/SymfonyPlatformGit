@@ -1,0 +1,5 @@
+rms_platform:
+    resource: "@RMSPlatformBundle/Resources/config/routing.yml"
+    prefix:   /
+
+

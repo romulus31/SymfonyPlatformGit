@@ -1,0 +1,4 @@
+services:
+#    rms_platform.example:
+#        class: RMS\PlatformBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

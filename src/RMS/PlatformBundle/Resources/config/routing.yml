@@ -1,0 +1,23 @@
+hello-world:
+    path : /advert
+    defaults: {_controller: RMSPlatformBundle:Advert:index } 
+    
+    
+rms_platform_view:
+    path: /platform/advert/{id}
+    defaults: {_controller: RMSPlatformBundle:Advert:view}
+    
+
+rms_platform_home:
+    path: /platform/add
+    defaults: {_controller: RMSPlatformBundle:Advert:add}
+    
+rms_platform_full:
+    path: /platform/full
+    defaults: {_controller: RMSPlatformBundle:Advert:full}
+    
+#nom de la route:
+    #path: nom de l'URL
+    #defaults: _controller: nom du bundle:nom du controller:nom de l'action
+    
+    
