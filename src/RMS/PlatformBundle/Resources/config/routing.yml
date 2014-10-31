@@ -4,16 +4,20 @@ hello-world:
     
     
 rms_platform_view:
-    path: /platform/advert/{id}
-    defaults: {_controller: RMSPlatformBundle:Advert:view}
-    
+    path: /advert/{id}
+    defaults: {_controller: RMSPlatformBundle:Advert:view, format:html}
+    requirements: 
+        id: \d{2}
+        format: html|xml
+        #requirement : permet de mettre des restrictions
+        #\d{1} permet de spécifier qu'il ne faut qu'un chiffre. Le format est soit html soit xml
 
-rms_platform_home:
-    path: /platform/add
+rms_platform_add:
+    path: /add
     defaults: {_controller: RMSPlatformBundle:Advert:add}
     
 rms_platform_full:
-    path: /platform/full
+    path: /full
     defaults: {_controller: RMSPlatformBundle:Advert:full}
     
 #nom de la route:
