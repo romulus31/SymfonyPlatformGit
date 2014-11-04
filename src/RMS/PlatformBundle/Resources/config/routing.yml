@@ -1,13 +1,16 @@
 hello-world:
-    path : /advert
-    defaults: {_controller: RMSPlatformBundle:Advert:index } 
+    path : /{page}
+    defaults: {_controller: RMSPlatformBundle:Advert:index, page:1 }
+    requirements:
+         id: \d*
+            
     
     
 rms_platform_view:
     path: /advert/{id}
     defaults: {_controller: RMSPlatformBundle:Advert:view, format:html}
     requirements: 
-        id: \d{2}
+        id: \d+
         format: html|xml
         #requirement : permet de mettre des restrictions
         #\d{1} permet de spécifier qu'il ne faut qu'un chiffre. Le format est soit html soit xml
@@ -20,8 +23,23 @@ rms_platform_full:
     path: /full
     defaults: {_controller: RMSPlatformBundle:Advert:full}
     
+rms_platform_edit:
+    path:      /edit/{id}
+    defaults:  { _controller: OCPlatformBundle:Advert:edit }
+    requirements:
+        id: \d+
+
+rms_platform_delete:
+    path:      /delete/{id}
+    defaults:  { _controller: OCPlatformBundle:Advert:delete }
+    requirements:
+        id: \d+
+    
 #nom de la route:
     #path: nom de l'URL
     #defaults: _controller: nom du bundle:nom du controller:nom de l'action
+    
+    #Le routeur essaie de faire correspondre chaque route à l'URL appelée par l'internaute, 
+    #et ce dans l'ordre d'apparition des routes : la première route qui correspond est sélectionnée.
     
     

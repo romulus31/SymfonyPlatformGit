@@ -20,19 +20,17 @@ class __TwigTemplate_fc509d6ece3e860187197da7340be13f5f8a29450df7ebd5e4e4ccf8485
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bienvenue sur ma première page avec OpenClassrooms !</title>
+        <title>Adverts</title>
     </head>
     <body>
-        <h1>Hello World !</h1>
+        <h1>Welcome on the adverts page !</h1>
         
         <p>
-            Le Hello World est un grand classique en programmation.
-            Il signifie énormément, car cela veut dire que vous avez
-            réussi à exécuter le programme pour accomplir une tâche simple :
-            afficher ce hello world !
+            < Adverts >
         </p>
     </body>
-</html>";
+</html>
+";
     }
 
     public function getTemplateName()

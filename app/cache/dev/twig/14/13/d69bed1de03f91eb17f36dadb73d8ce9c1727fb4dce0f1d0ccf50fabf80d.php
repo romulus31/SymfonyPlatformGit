@@ -26,7 +26,12 @@ class __TwigTemplate_1413d69bed1de03f91eb17f36dadb73d8ce9c1727fb4dce0f1d0ccf50fa
         <h1>Cette page est une page de vue</h1>
         
         <p>
-           Cette page est une page de vue dans le dossier src/PRS/PlatformBundle/Resources/views/Advert/
+        <div>
+           Cette page est une page de vue dans le dossier src/PRS/PlatformBundle/Resources/views/Advert/ 
+        </div>
+           
+           
+          
         </p>
     </body>
 </html>

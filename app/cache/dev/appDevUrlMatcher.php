@@ -122,21 +122,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // hello-world
-        if ($pathinfo === '/advert') {
-            return array (  '_controller' => 'RMS\\PlatformBundle\\Controller\\AdvertController::indexAction',  '_route' => 'hello-world',);
-        }
-
         if (0 === strpos($pathinfo, '/platform')) {
+            // hello-world
+            if (preg_match('#^/platform(?:/(?P<page>[^/]++))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'hello-world')), array (  '_controller' => 'RMS\\PlatformBundle\\Controller\\AdvertController::indexAction',  'page' => 1,));
+            }
+
             if (0 === strpos($pathinfo, '/platform/ad')) {
                 // rms_platform_view
-                if (0 === strpos($pathinfo, '/platform/advert') && preg_match('#^/platform/advert/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rms_platform_view')), array (  '_controller' => 'RMS\\PlatformBundle\\Controller\\AdvertController::viewAction',));
+                if (0 === strpos($pathinfo, '/platform/advert') && preg_match('#^/platform/advert/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rms_platform_view')), array (  '_controller' => 'RMS\\PlatformBundle\\Controller\\AdvertController::viewAction',  'format' => 'html',));
                 }
 
-                // rms_platform_home
+                // rms_platform_add
                 if ($pathinfo === '/platform/add') {
-                    return array (  '_controller' => 'RMS\\PlatformBundle\\Controller\\AdvertController::addAction',  '_route' => 'rms_platform_home',);
+                    return array (  '_controller' => 'RMS\\PlatformBundle\\Controller\\AdvertController::addAction',  '_route' => 'rms_platform_add',);
                 }
 
             }
@@ -144,6 +144,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // rms_platform_full
             if ($pathinfo === '/platform/full') {
                 return array (  '_controller' => 'RMS\\PlatformBundle\\Controller\\AdvertController::fullAction',  '_route' => 'rms_platform_full',);
+            }
+
+            // rms_platform_edit
+            if (0 === strpos($pathinfo, '/platform/edit') && preg_match('#^/platform/edit/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'rms_platform_edit')), array (  '_controller' => 'OCPlatformBundle:Advert:edit',));
+            }
+
+            // rms_platform_delete
+            if (0 === strpos($pathinfo, '/platform/delete') && preg_match('#^/platform/delete/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'rms_platform_delete')), array (  '_controller' => 'OCPlatformBundle:Advert:delete',));
             }
 
         }
