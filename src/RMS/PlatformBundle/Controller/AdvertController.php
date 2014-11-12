@@ -56,7 +56,6 @@ class AdvertController extends Controller {
 
     public function addAction(Request $request) {
         $session = $request->getSession();
-
         // Bien sûr, cette méthode devra réellement ajouter l'annonce
         // Mais faisons comme si c'était le cas
         $session->getFlashBag()->add('info', 'Annonce bien enregistrée');
@@ -64,7 +63,12 @@ class AdvertController extends Controller {
         // Il peut bien sûr contenir plusieurs messages :
         $session->getFlashBag()->add('info', 'Oui oui, il est bien enregistré !');
         // Puis on redirige vers la page de visualisation de cette annonce
-        return $this->redirect($this->generateUrl('rms_platform_view', array('id' => 5)));
+       return $this->redirect($this->generateUrl('rms_platform_view', array('id' => 88)));
+       // return new Response("Je suis une page de test, je n'ai rien à dire");
+    }
+    
+    public function fullAction(){
+        return $this->render('RMSPlatformBundle:Advert:full.html.twig');
     }
 
 }

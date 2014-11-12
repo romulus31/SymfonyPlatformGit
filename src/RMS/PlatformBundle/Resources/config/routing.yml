@@ -2,7 +2,7 @@ rms_platform_home:
     path : /{page}
     defaults: {_controller: RMSPlatformBundle:Advert:index, page:1 }
     requirements:
-         id: \d*
+         page: \d*
             
     
     
