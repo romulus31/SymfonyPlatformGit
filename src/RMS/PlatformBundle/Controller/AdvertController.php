@@ -1,74 +1,78 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// src/OC/PlatformBundle/Controller/AdvertController.php
 
 namespace RMS\PlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Redirect;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class AdvertController extends Controller {
-
-    public function indexAction() {
-        $content = $this->get('templating')->render('RMSPlatformBundle:Advert:advert.html.twig');
-        return new Response($content);
-//        $url = $this->get('router')->generate(
-//            'oc_platform_view', // 1er argument : le nom de la route
-//            array('id' => 5)    // 2e argument : les valeurs des paramètres
-//        );
-//         return new Response("L'URL de l'annonce d'id 5 est : ".$url);
+class AdvertController extends Controller
+{
+  public function indexAction($page)
+  {
+    // On ne sait pas combien de pages il y a
+    // Mais on sait qu'une page doit être supérieure ou égale à 1
+    if ($page < 1) {
+      // On déclenche une exception NotFoundHttpException, cela va afficher
+      // une page d'erreur 404 (qu'on pourra personnaliser plus tard d'ailleurs)
+      throw new NotFoundHttpException('Page "'.$page.'" inexistante.');
     }
 
-    public function viewAction($id) {
+    // Ici, on récupérera la liste des annonces, puis on la passera au template
 
-        // Récupération de la session
-//    $session = $req->getSession();
-//    
-//    // On récupère le contenu de la variable user_id
-//    $userId = $session->get('user_id');
-//    // On définit une nouvelle valeur pour cette variable user_id
-//    $session->set('user_id', 91);
-//    // On n'oublie pas de renvoyer une réponse
-//    return new Response("Je suis une page de test, je n'ai rien à dire");
-        //return new \Symfony\Component\HttpFoundation\JsonResponse(array('id'=>$id));
-        //$url = $this->get('router')->generate('hello-world');
-        //return new RedirectResponse($url);
-        //$content = $this->get('templating')->render('RMSPlatformBundle:Advert:view.html.twig');
-        //return new Response($content);
-        // if($request->isMethod('GET')){
-        //$tag = $request->query->get('sdf');
-        //return new Response("id de la vue : ".$id." et du tag : ".$tag);
-        // On veut avoir l'URL de l'annonce d'id 5.
-        // $url vaut « /platform/advert/5 »
-        // On utilise le raccourci : il crée un objet Response
-        // Et lui donne comme contenu le contenu du template
-        return $this->get('templating')->renderResponse(
-                        'RMSPlatformBundle:Advert:view.html.twig', array('id' => $id) // on crée un tableau associatif avec comme id 'id' et la valeur de id
-                        // que l'on passe en paramètre à la vue
-        );
+    // Mais pour l'instant, on ne fait qu'appeler le template
+    return $this->render('RMSPlatformBundle:Advert:index.html.twig');
+  }
+
+  public function viewAction($id)
+  {
+    // Ici, on récupérera l'annonce correspondante à l'id $id
+
+    return $this->render('RMSPlatformBundle:Advert:view.html.twig', array(
+      'id' => $id
+    ));
+  }
+
+  public function addAction(Request $request)
+  {
+    // La gestion d'un formulaire est particulière, mais l'idée est la suivante :
+
+    // Si la requête est en POST, c'est que le visiteur a soumis le formulaire
+    if ($request->isMethod('POST')) {
+      // Ici, on s'occupera de la création et de la gestion du formulaire
+
+      $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+
+      // Puis on redirige vers la page de visualisation de cettte annonce
+      return $this->redirect($this->generateUrl('rms_platform_view', array('id' => 5)));
     }
 
-    public function addAction(Request $request) {
-        $session = $request->getSession();
-        // Bien sûr, cette méthode devra réellement ajouter l'annonce
-        // Mais faisons comme si c'était le cas
-        $session->getFlashBag()->add('info', 'Annonce bien enregistrée');
-        // Le « flashBag » est ce qui contient les messages flash dans la session
-        // Il peut bien sûr contenir plusieurs messages :
-        $session->getFlashBag()->add('info', 'Oui oui, il est bien enregistré !');
-        // Puis on redirige vers la page de visualisation de cette annonce
-       return $this->redirect($this->generateUrl('rms_platform_view', array('id' => 88)));
-       // return new Response("Je suis une page de test, je n'ai rien à dire");
-    }
-    
-    public function fullAction(){
-        return $this->render('RMSPlatformBundle:Advert:full.html.twig');
+    // Si on n'est pas en POST, alors on affiche le formulaire
+    return $this->render('RMSPlatformBundle:Advert:add.html.twig');
+  }
+
+  public function editAction($id, Request $request)
+  {
+    // Ici, on récupérera l'annonce correspondante à $id
+
+    // Même mécanisme que pour l'ajout
+    if ($request->isMethod('POST')) {
+      $request->getSession()->getFlashBag()->add('notice', 'Annonce bien modifiée.');
+
+      return $this->redirect($this->generateUrl('rms_platform_view', array('id' => 5)));
     }
 
+    return $this->render('RMSPlatformBundle:Advert:edit.html.twig');
+  }
+
+  public function deleteAction($id)
+  {
+    // Ici, on récupérera l'annonce correspondant à $id
+
+    // Ici, on gérera la suppression de l'annonce en question
+
+    return $this->render('RMSPlatformBundle:Advert:delete.html.twig');
+  }
 }

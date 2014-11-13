@@ -79,6 +79,7 @@
   'DoctrineBundle:Collector:explain.html.twig' => 'D:\\wamp\\www\\SymfonyPlatform\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views/Collector/explain.html.twig',
   'RMSPlatformBundle:Advert:add.html.twig' => 'D:\\wamp\\www\\SymfonyPlatform\\src\\RMS\\PlatformBundle/Resources/views/Advert/add.html.twig',
   'RMSPlatformBundle:Advert:advert.html.twig' => 'D:\\wamp\\www\\SymfonyPlatform\\src\\RMS\\PlatformBundle/Resources/views/Advert/advert.html.twig',
+  'RMSPlatformBundle:Advert:full.html.twig' => 'D:\\wamp\\www\\SymfonyPlatform\\src\\RMS\\PlatformBundle/Resources/views/Advert/full.html.twig',
   'RMSPlatformBundle:Advert:view.html.twig' => 'D:\\wamp\\www\\SymfonyPlatform\\src\\RMS\\PlatformBundle/Resources/views/Advert/view.html.twig',
   'WebProfilerBundle:Collector:config.html.twig' => 'D:\\wamp\\www\\SymfonyPlatform\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views/Collector/config.html.twig',
   'WebProfilerBundle:Collector:events.html.twig' => 'D:\\wamp\\www\\SymfonyPlatform\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views/Collector/events.html.twig',

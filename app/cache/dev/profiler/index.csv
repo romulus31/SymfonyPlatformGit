@@ -29,3 +29,10 @@ a4e7e3,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/platform/a
 460db8,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/platform/advert/5,1415809341,
 7cad78,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/platform/add,1415809406,
 c9b6f8,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/platform/advert/88,1415809407,
+9ce8b6,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/advert,1415890014,b49e22
+b49e22,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/advert,1415890014,
+7e8a7c,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/add,1415890018,a47f04
+a47f04,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/add,1415890018,
+122181,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/platform/add,1415890029,1edf3c
+1edf3c,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/platform/add,1415890029,
+65caf3,127.0.0.1,GET,http://localhost/symfonyPlatform/web/app_dev.php/platform/add,1415890485,

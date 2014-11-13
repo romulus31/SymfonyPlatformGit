@@ -16,41 +16,39 @@ class __TwigTemplate_1413d69bed1de03f91eb17f36dadb73d8ce9c1727fb4dce0f1d0ccf50fa
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 2
-        echo "
-<!DOCTYPE html>
+        echo "<!DOCTYPE html>
 <html>
-    <head>
-        <title>Adverts n°";
-        // line 6
+  <head>
+    <title>Bienvenue sur ma première page avec OpenClassrooms !</title>
+  </head>
+  <body>
+    <h1>Affichage d'une annonce</h1>
+    <p>
+      ";
+        // line 11
+        echo "      ";
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "info"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 12
+            echo "        <p>Message flash : ";
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "</p>
+      ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 14
+        echo "    </p>
+    <p>
+      Ici nous pourrons lire l'annonce ayant comme id : ";
+        // line 16
         echo twig_escape_filter($this->env, (isset($context["id"]) ? $context["id"] : $this->getContext($context, "id")), "html", null, true);
-        echo "</title>
-    </head>
-    <body>
-        <h1>Cette page est une page de vue qui affiche l'annonce n°";
-        // line 9
-        echo twig_escape_filter($this->env, (isset($context["id"]) ? $context["id"] : $this->getContext($context, "id")), "html", null, true);
-        echo "</h1>
-
-        <p>
-        <div>
-            <ul>
-                Cette page est une page de vue dans le dossier src/PRS/PlatformBundle/Resources/views/Advert/ 
-                
-                <br>
-
-                Elle affiche l'annonce n°";
-        // line 18
-        echo twig_escape_filter($this->env, (isset($context["id"]) ? $context["id"] : $this->getContext($context, "id")), "html", null, true);
-        echo "
-            </ul>
-
-
-        </div>
-
-
-
+        echo "<br />
+      Mais pour l'instant, nous ne savons pas encore le faire, cela viendra !
     </p>
-</body>
+  </body>
 </html>
 ";
     }
@@ -67,6 +65,6 @@ class __TwigTemplate_1413d69bed1de03f91eb17f36dadb73d8ce9c1727fb4dce0f1d0ccf50fa
 
     public function getDebugInfo()
     {
-        return array (  43 => 18,  31 => 9,  25 => 6,  19 => 2,);
+        return array (  47 => 16,  43 => 14,  34 => 12,  29 => 11,  19 => 2,);
     }
 }
