@@ -1,25 +1,14 @@
-{# empty Twig template #}
+{% extends "RMSPlatformBundle::layout.html.twig" %}
 
-{# src/OC/PlatformBundle/Resources/views/Advert/index.html.twig #}
+{% block body %}
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Add Adverts</title>
-    </head>
-    <body>
-        <h1>Welcome on the "Add" adverts page !</h1>
-        
-        <p>          
-            {% if age<18 %} 
-            vous êtes mineur
-            {%else%}
-            vous êtes majeur
-            {% endif %}
-           
-        <footer>
-            Votre webmaster {{webmaster|upper}}.
-        </footer>
-        </p>
-    </body>
-</html>
+  <h2>Add an advert</h2>
+
+  {{ include("RMSPlatformBundle:Advert:form.html.twig") }}
+
+  <p>
+    Attention : cette annonce sera ajoutée directement
+    sur la page d'accueil après validation du formulaire.
+  </p>
+
+{% endblock %}

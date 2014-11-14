@@ -7,50 +7,40 @@ class __TwigTemplate_8f6157d15c7bb5d419f9ce814fd7cc850b10f5ef253472e71325ef4954c
     {
         parent::__construct($env);
 
-        $this->parent = false;
+        $this->parent = $this->env->loadTemplate("RMSPlatformBundle::layout.html.twig");
 
         $this->blocks = array(
+            'body' => array($this, 'block_body'),
         );
+    }
+
+    protected function doGetParent(array $context)
+    {
+        return "RMSPlatformBundle::layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 2
-        echo "
-";
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+    }
+
+    // line 3
+    public function block_body($context, array $blocks = array())
+    {
         // line 4
         echo "
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Add Adverts</title>
-    </head>
-    <body>
-        <h1>Welcome on the \"Add\" adverts page !</h1>
-        
-        <p>          
-            ";
-        // line 14
-        if (((isset($context["age"]) ? $context["age"] : $this->getContext($context, "age")) < 18)) {
-            echo " 
-            vous êtes mineur
-            ";
-        } else {
-            // line 17
-            echo "            vous êtes majeur
-            ";
-        }
-        // line 19
-        echo "           
-        <footer>
-            Votre webmaster ";
-        // line 21
-        echo twig_escape_filter($this->env, twig_upper_filter($this->env, (isset($context["webmaster"]) ? $context["webmaster"] : $this->getContext($context, "webmaster"))), "html", null, true);
-        echo ".
-        </footer>
-        </p>
-    </body>
-</html>
+  <h2>Add an advert</h2>
+
+  ";
+        // line 7
+        echo twig_include($this->env, $context, "RMSPlatformBundle:Advert:form.html.twig");
+        echo "
+
+  <p>
+    Attention : cette annonce sera ajoutée directement
+    sur la page d'accueil après validation du formulaire.
+  </p>
+
 ";
     }
 
@@ -66,6 +56,6 @@ class __TwigTemplate_8f6157d15c7bb5d419f9ce814fd7cc850b10f5ef253472e71325ef4954c
 
     public function getDebugInfo()
     {
-        return array (  48 => 21,  44 => 19,  40 => 17,  34 => 14,  22 => 4,  19 => 2,);
+        return array (  36 => 7,  31 => 4,  28 => 3,);
     }
 }

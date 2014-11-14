@@ -29,7 +29,8 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     globals: 
-        webmaster : Romain Fauconnier
+        webmaster : Romain Fauconnier 
+        #global variable added : webmaster
 
 # Assetic Configuration
 assetic:

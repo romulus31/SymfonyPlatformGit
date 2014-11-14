@@ -35,7 +35,7 @@ class AdvertController extends Controller
     ));
   }
 
-  public function addAction($age,Request $request)
+  public function addAction(Request $request)
   {
     // La gestion d'un formulaire est particulière, mais l'idée est la suivante :
 
@@ -50,7 +50,7 @@ class AdvertController extends Controller
     }
 
     // Si on n'est pas en POST, alors on affiche le formulaire
-    return $this->render('RMSPlatformBundle:Advert:add.html.twig',array('age'=>$age));
+    return $this->render('RMSPlatformBundle:Advert:add.html.twig');
   }
 
   public function editAction($id, Request $request)
@@ -74,5 +74,22 @@ class AdvertController extends Controller
     // Ici, on gérera la suppression de l'annonce en question
 
     return $this->render('RMSPlatformBundle:Advert:delete.html.twig');
+  }
+  
+  public function menuAction(){
+      
+      // On fixe en dur une liste ici, bien entendu par la suite
+    // on la récupérera depuis la BDD !
+    $listAdverts = array(
+      array('id' => 2, 'title' => 'Recherche développeur Symfony2'),
+      array('id' => 5, 'title' => 'Mission de webmaster'),
+      array('id' => 9, 'title' => 'Offre de stage webdesigner')
+    );
+
+    return $this->render('RMSPlatformBundle:Advert:menu.html.twig', array(
+      // Tout l'intérêt est ici : le contrôleur passe
+      // les variables nécessaires au template !
+      'listAdverts' => $listAdverts
+    ));
   }
 }

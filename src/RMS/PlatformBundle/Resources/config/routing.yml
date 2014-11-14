@@ -16,10 +16,9 @@ rms_platform_view:
         #\d{1} permet de spécifier qu'il ne faut qu'un chiffre. Le format est soit html soit xml
 
 rms_platform_add:
-    path: /add/{age}
+    path: /add
     defaults: {_controller: RMSPlatformBundle:Advert:add}
-    requirements:
-        age: \d+
+    
     
 rms_platform_full:
     path: /full
