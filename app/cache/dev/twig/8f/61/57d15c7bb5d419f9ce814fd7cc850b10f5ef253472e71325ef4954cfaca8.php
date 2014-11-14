@@ -28,8 +28,26 @@ class __TwigTemplate_8f6157d15c7bb5d419f9ce814fd7cc850b10f5ef253472e71325ef4954c
     <body>
         <h1>Welcome on the \"Add\" adverts page !</h1>
         
-        <p>
-            <  Add Adverts >
+        <p>          
+            ";
+        // line 14
+        if (((isset($context["age"]) ? $context["age"] : $this->getContext($context, "age")) < 18)) {
+            echo " 
+            vous êtes mineur
+            ";
+        } else {
+            // line 17
+            echo "            vous êtes majeur
+            ";
+        }
+        // line 19
+        echo "           
+        <footer>
+            Votre webmaster ";
+        // line 21
+        echo twig_escape_filter($this->env, twig_upper_filter($this->env, (isset($context["webmaster"]) ? $context["webmaster"] : $this->getContext($context, "webmaster"))), "html", null, true);
+        echo ".
+        </footer>
         </p>
     </body>
 </html>
@@ -41,8 +59,13 @@ class __TwigTemplate_8f6157d15c7bb5d419f9ce814fd7cc850b10f5ef253472e71325ef4954c
         return "RMSPlatformBundle:Advert:add.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  22 => 4,  19 => 2,);
+        return array (  48 => 21,  44 => 19,  40 => 17,  34 => 14,  22 => 4,  19 => 2,);
     }
 }

@@ -10,8 +10,16 @@
     <body>
         <h1>Welcome on the "Add" adverts page !</h1>
         
-        <p>
-            <  Add Adverts >
+        <p>          
+            {% if age<18 %} 
+            vous êtes mineur
+            {%else%}
+            vous êtes majeur
+            {% endif %}
+           
+        <footer>
+            Votre webmaster {{webmaster|upper}}.
+        </footer>
         </p>
     </body>
 </html>

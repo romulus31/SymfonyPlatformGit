@@ -35,7 +35,7 @@ class AdvertController extends Controller
     ));
   }
 
-  public function addAction(Request $request)
+  public function addAction($age,Request $request)
   {
     // La gestion d'un formulaire est particulière, mais l'idée est la suivante :
 
@@ -50,7 +50,7 @@ class AdvertController extends Controller
     }
 
     // Si on n'est pas en POST, alors on affiche le formulaire
-    return $this->render('RMSPlatformBundle:Advert:add.html.twig');
+    return $this->render('RMSPlatformBundle:Advert:add.html.twig',array('age'=>$age));
   }
 
   public function editAction($id, Request $request)
