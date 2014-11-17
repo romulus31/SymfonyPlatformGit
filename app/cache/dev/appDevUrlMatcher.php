@@ -135,8 +135,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
 
                 // rms_platform_add
-                if (0 === strpos($pathinfo, '/platform/add') && preg_match('#^/platform/add/(?P<age>\\d+)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'rms_platform_add')), array (  '_controller' => 'RMS\\PlatformBundle\\Controller\\AdvertController::addAction',));
+                if ($pathinfo === '/platform/add') {
+                    return array (  '_controller' => 'RMS\\PlatformBundle\\Controller\\AdvertController::addAction',  '_route' => 'rms_platform_add',);
                 }
 
             }

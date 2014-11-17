@@ -12,26 +12,47 @@ class AdvertController extends Controller
 {
   public function indexAction($page)
   {
-    // On ne sait pas combien de pages il y a
-    // Mais on sait qu'une page doit être supérieure ou égale à 1
-    if ($page < 1) {
-      // On déclenche une exception NotFoundHttpException, cela va afficher
-      // une page d'erreur 404 (qu'on pourra personnaliser plus tard d'ailleurs)
-      throw new NotFoundHttpException('Page "'.$page.'" inexistante.');
-    }
+    // ...
 
-    // Ici, on récupérera la liste des annonces, puis on la passera au template
+    // Notre liste d'annonce en dur
+    $listAdverts = array(
+      array(
+        'title'   => 'Recherche développpeur Symfony2',
+        'id'      => 1,
+        'author'  => 'Alexandre',
+        'content' => 'Nous recherchons un développeur Symfony2 débutant sur Lyon. Blabla…',
+        'date'    => new \Datetime()),
+      array(
+        'title'   => 'Mission de webmaster',
+        'id'      => 2,
+        'author'  => 'Hugo',
+        'content' => 'Nous recherchons un webmaster capable de maintenir notre site internet. Blabla…',
+        'date'    => new \Datetime()),
+      array(
+        'title'   => 'Offre de stage webdesigner',
+        'id'      => 3,
+        'author'  => 'Mathieu',
+        'content' => 'Nous proposons un poste pour webdesigner. Blabla…',
+        'date'    => new \Datetime())
+    );
 
-    // Mais pour l'instant, on ne fait qu'appeler le template
-    return $this->render('RMSPlatformBundle:Advert:index.html.twig');
+    // Et modifiez le 2nd argument pour injecter notre liste
+    return $this->render('RMSPlatformBundle:Advert:index.html.twig', array(
+      'listAdverts' => $listAdverts
+    ));
   }
 
   public function viewAction($id)
   {
-    // Ici, on récupérera l'annonce correspondante à l'id $id
-
+    $advert = array(
+      'title'   => 'Recherche développpeur Symfony2',
+      'id'      => $id,
+      'author'  => 'Alexandre',
+      'content' => 'Nous recherchons un développeur Symfony2 débutant sur Lyon. Blabla…',
+      'date'    => new \Datetime()
+    );
     return $this->render('RMSPlatformBundle:Advert:view.html.twig', array(
-      'id' => $id
+      'advert' => $advert
     ));
   }
 
@@ -55,16 +76,19 @@ class AdvertController extends Controller
 
   public function editAction($id, Request $request)
   {
-    // Ici, on récupérera l'annonce correspondante à $id
+    // ...
+    
+    $advert = array(
+      'title'   => 'Recherche développpeur Symfony2',
+      'id'      => $id,
+      'author'  => 'Alexandre',
+      'content' => 'Nous recherchons un développeur Symfony2 débutant sur Lyon. Blabla…',
+      'date'    => new \Datetime()
+    );
 
-    // Même mécanisme que pour l'ajout
-    if ($request->isMethod('POST')) {
-      $request->getSession()->getFlashBag()->add('notice', 'Annonce bien modifiée.');
-
-      return $this->redirect($this->generateUrl('rms_platform_view', array('id' => 5)));
-    }
-
-    return $this->render('RMSPlatformBundle:Advert:edit.html.twig');
+    return $this->render('RMSPlatformBundle:Advert:edit.html.twig', array(
+      'advert' => $advert
+    ));
   }
 
   public function deleteAction($id)

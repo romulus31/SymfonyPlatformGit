@@ -17,14 +17,13 @@
 <body>
   <div class="container">
     <div id="header" class="jumbotron">
-      <h1>Ma plateforme d'annonces</h1>
+      <h1>Plateforme d'annonces</h1>
       <p>
-        Ce projet est propulsé par Symfony2,
-        et construit grâce au MOOC OpenClassrooms et SensioLabs.
+        Ce projet est propulsé par Symfony2
       </p>
       <p>
-        <a class="btn btn-primary btn-lg" href="http://fr.openclassrooms.com/informatique/cours/developpez-votre-site-web-avec-le-framework-symfony2">
-          Participer au MOOC »
+        <a class="btn btn-primary btn-lg" href="http://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur">
+          Qu'est ce que le MVC ? »
         </a>
       </p>
     </div>
@@ -42,14 +41,17 @@
       </div>
       <div id="content" class="col-md-9">
         {% block body %}
+        {% block rmsplatform_body %}
         {% endblock %}
+        {% endblock %}
+        
       </div>
     </div>
 
     <hr>
 
     <footer>
-      <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+      <p>The sky's the limit © {{ 'now'|date('Y-M-D-H') }}h and beyond.</p>
     </footer>
   </div>
 

@@ -124,7 +124,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         if (0 === strpos($pathinfo, '/platform')) {
             // rms_platform_home
-            if (preg_match('#^/platform(?:/(?P<page>[^/]++))?$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/platform(?:/(?P<page>\\d*))?$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'rms_platform_home')), array (  '_controller' => 'RMS\\PlatformBundle\\Controller\\AdvertController::indexAction',  'page' => 1,));
             }
 
