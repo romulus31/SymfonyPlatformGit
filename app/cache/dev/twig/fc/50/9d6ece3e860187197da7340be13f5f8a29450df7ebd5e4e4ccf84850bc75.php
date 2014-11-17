@@ -23,6 +23,7 @@ class __TwigTemplate_fc509d6ece3e860187197da7340be13f5f8a29450df7ebd5e4e4ccf8485
         <title>Adverts</title>
     </head>
     <body>
+        <div>
         <h1>Welcome on the adverts page !</h1>
         
         <p>
